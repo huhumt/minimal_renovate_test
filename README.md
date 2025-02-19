@@ -1,0 +1,1 @@
+# minimal_renovate_test
