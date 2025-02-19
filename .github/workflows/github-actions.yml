@@ -1,0 +1,9 @@
+name: Minimal renovatebot test
+on: [push]
+jobs:
+  Mirror-prometheus-blackbox-exporter-docker-image:
+    runs-on: mgoltzsche/podman:minimal
+    steps:
+      - run: podman image pull quay.io/prometheus/blackbox-exporter:v0.25.0
+      - run: podman tag quay.io/prometheus/blackbox-exporter:v0.25.0 ghcr.io/${{ github.repository }}/blackbox-exporter:v0.25.0
+      - run: podman push ghcr.io/${{ github.repository }}/blackbox-exporter:v0.25.0
